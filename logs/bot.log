@@ -1,0 +1,81 @@
+2026-03-28 19:12:13 │ INFO     │ memory │ Loaded 3 prompt mode(s): assistant, developer, analyst (default: assistant)
+2026-03-28 19:12:14 │ INFO     │ __main__ │ Pre-fetching USD/RUB rate…
+2026-03-28 19:12:14 │ INFO     │ pricing │ CBR USD/RUB updated: 81.1443
+2026-03-28 19:12:14 │ INFO     │ __main__ │ USD/RUB = 81.1443
+2026-03-28 19:12:15 │ INFO     │ __main__ │ Bot starting | chat=gpt-5-mini-2025-08-07 | sora=sora-2 | base_url=https://openai.api.proxyapi.ru/v1 | history=10
+2026-03-28 19:44:05 │ INFO     │ __main__ │ user=150370276 message (31 chars) mode=assistant
+2026-03-28 19:44:18 │ INFO     │ __main__ │ user=150370276 openai ok in 12.22s tokens=[in=44, out=932] reply=1407 chars
+2026-03-28 19:44:18 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 44 вх / 932 вых | 💰 Стоимость: $0.000566 ≈ 0.0459 ₽
+2026-03-28 19:45:33 │ INFO     │ __main__ │ user=150370276 message (59 chars) mode=assistant
+2026-03-28 19:45:39 │ INFO     │ __main__ │ user=150370276 openai ok in 5.47s tokens=[in=484, out=400] reply=568 chars
+2026-03-28 19:45:39 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 484 вх / 400 вых | 💰 Стоимость: $0.000313 ≈ 0.0254 ₽
+2026-03-28 19:46:09 │ INFO     │ __main__ │ user=150370276 message (1 chars) mode=assistant
+2026-03-28 19:46:28 │ INFO     │ __main__ │ user=150370276 openai ok in 18.52s tokens=[in=693, out=1360] reply=942 chars
+2026-03-28 19:46:28 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 693 вх / 1360 вых | 💰 Стоимость: $0.000920 ≈ 0.0746 ₽
+2026-03-28 19:46:28 │ ERROR    │ aiogram.event │ Cause exception while process update id=99681983 by bot id=8698048508
+TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "svg" at byte offset 239
+Traceback (most recent call last):
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 320, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 164, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 58, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 43, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 71, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 153, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 189, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 153, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 181, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 71, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\main.py", line 247, in handle_text
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\methods\base.py", line 82, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\bot.py", line 488, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\base.py", line 121, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "svg" at byte offset 239
