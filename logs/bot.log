@@ -198,3 +198,5 @@ aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: MESSA
 2026-03-28 21:12:21 │ WARNING  │ aiogram.dispatcher │ Sleep for 3.730344 seconds and try again... (tryings = 5, bot id = 8698048508)
 2026-03-28 21:13:25 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
 2026-03-28 21:13:25 │ WARNING  │ aiogram.dispatcher │ Sleep for 4.847686 seconds and try again... (tryings = 6, bot id = 8698048508)
+2026-03-28 21:13:49 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+2026-03-28 21:13:49 │ WARNING  │ aiogram.dispatcher │ Sleep for 5.035492 seconds and try again... (tryings = 7, bot id = 8698048508)
