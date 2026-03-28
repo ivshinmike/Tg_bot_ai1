@@ -68,3 +68,18 @@ async def format_video_cost(seconds: int) -> str:
         f"📊 Видео: {seconds} сек, модель {config.SORA_MODEL}\n"
         f"💰 Стоимость: ${cost_usd:.2f} ≈ {cost_rub:.2f} ₽"
     )
+
+
+def calc_image_cost_usd() -> float:
+    return config.DALLE_PRICE_PER_IMAGE
+
+
+async def format_image_cost() -> str:
+    cost_usd = calc_image_cost_usd()
+    rate = await get_usd_rub()
+    cost_rub = cost_usd * rate
+
+    return (
+        f"📊 Изображение: {config.DALLE_MODEL}, {config.DALLE_SIZE}\n"
+        f"💰 Стоимость: ${cost_usd:.4f} ≈ {cost_rub:.4f} ₽"
+    )

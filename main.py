@@ -1,4 +1,5 @@
 import asyncio
+import base64
 import logging
 import time
 from pathlib import Path
@@ -6,6 +7,7 @@ from pathlib import Path
 from aiogram import Bot, Dispatcher, F, Router, types
 from aiogram.filters import Command, CommandStart
 from aiogram.types import (
+    BufferedInputFile,
     FSInputFile,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -34,10 +36,11 @@ sora_client = AsyncOpenAI(
     base_url=config.SORA_BASE_URL,
 )
 
-VIDEOS_DIR = Path("videos")
-VIDEOS_DIR.mkdir(exist_ok=True)
+MEDIA_DIR = Path("media")
+MEDIA_DIR.mkdir(exist_ok=True)
 
 _video_locks: dict[int, bool] = {}
+_image_locks: dict[int, bool] = {}
 
 
 # ── /start ───────────────────────────────────────────────────────────────
@@ -56,6 +59,7 @@ async def cmd_start(message: types.Message) -> None:
         "Команды:\n"
         "/mode — выбрать режим\n"
         "/reset — очистить историю диалога\n"
+        "/image &lt;описание&gt; — сгенерировать картинку (DALL·E)\n"
         "/video &lt;описание&gt; — сгенерировать видео (Sora-2)",
         parse_mode="HTML",
     )
@@ -122,6 +126,80 @@ async def cb_set_mode(callback: types.CallbackQuery) -> None:
     await callback.answer()
 
 
+# ── /image ───────────────────────────────────────────────────────────────
+
+@router.message(Command("image"))
+async def cmd_image(message: types.Message) -> None:
+    if not message.from_user or not message.text:
+        return
+
+    uid = message.from_user.id
+    prompt = message.text.partition(" ")[2].strip()
+    if not prompt:
+        await message.answer(
+            "Использование: /image &lt;описание картинки&gt;\n\n"
+            f"Параметры: модель <b>{config.DALLE_MODEL}</b>, "
+            f"размер {config.DALLE_SIZE}",
+            parse_mode="HTML",
+        )
+        return
+
+    if _image_locks.get(uid):
+        await message.answer("⏳ У вас уже генерируется изображение. Дождитесь завершения.")
+        return
+    _image_locks[uid] = True
+
+    log.info(
+        "user=%d /image prompt='%s' model=%s size=%s",
+        uid, prompt[:120], config.DALLE_MODEL, config.DALLE_SIZE,
+    )
+
+    placeholder = await message.answer("🎨 Генерация изображения…")
+
+    t0 = time.monotonic()
+    try:
+        resp = await chat_client.images.generate(
+            model=config.DALLE_MODEL,
+            prompt=prompt,
+            n=1,
+            size=config.DALLE_SIZE,  # type: ignore[arg-type]
+            quality=config.DALLE_QUALITY,  # type: ignore[arg-type]
+            response_format="b64_json",
+        )
+        elapsed = time.monotonic() - t0
+
+        if not resp.data:
+            await placeholder.edit_text("❌ API вернул пустой ответ.")
+            return
+
+        b64 = getattr(resp.data[0], "b64_json", None)
+        if not b64:
+            await placeholder.edit_text("❌ API вернул пустой ответ.")
+            return
+
+        image_bytes = base64.b64decode(b64)
+        log.info(
+            "user=%d image ok in %.2fs size=%.0f KB",
+            uid, elapsed, len(image_bytes) / 1024,
+        )
+
+        cost_text = await pricing.format_image_cost()
+        log.info("user=%d image cost: %s", uid, cost_text.replace("\n", " | "))
+
+        await message.answer_photo(
+            photo=BufferedInputFile(image_bytes, filename="image.png"),
+            caption=f"🎨 Готово за {elapsed:.1f} сек\n\n{cost_text}",
+        )
+        await placeholder.delete()
+
+    except Exception as exc:
+        elapsed = time.monotonic() - t0
+        log.exception("user=%d image EXCEPTION in %.1fs: %s", uid, elapsed, exc)
+        await placeholder.edit_text(f"❌ Ошибка генерации: {exc}")
+    finally:
+        _image_locks.pop(uid, None)
+
+
 # ── /video ───────────────────────────────────────────────────────────────
 
 @router.message(Command("video"))
@@ -182,7 +260,7 @@ async def cmd_video(message: types.Message) -> None:
 
         log.info("user=%d video COMPLETED in %.1fs id=%s", uid, elapsed, video.id)
 
-        file_path = VIDEOS_DIR / f"{uid}_{video.id}.mp4"
+        file_path = MEDIA_DIR / f"{uid}_{video.id}.mp4"
         content = await sora_client.videos.download_content(video.id, variant="video")
         content.write_to_file(str(file_path))
         file_size_mb = file_path.stat().st_size / 1024 / 1024

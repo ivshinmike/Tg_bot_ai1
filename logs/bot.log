@@ -79,3 +79,120 @@ Traceback (most recent call last):
   File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\base.py", line 121, in check_response
     raise TelegramBadRequest(method=method, message=description)
 aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't parse entities: Unsupported start tag "svg" at byte offset 239
+2026-03-28 20:26:50 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2026-03-28 20:26:50 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8698048508)
+2026-03-28 20:27:51 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 20:27:51 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.333699 seconds and try again... (tryings = 1, bot id = 8698048508)
+2026-03-28 20:28:52 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 20:28:52 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.905529 seconds and try again... (tryings = 2, bot id = 8698048508)
+2026-03-28 20:29:54 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 20:29:54 │ WARNING  │ aiogram.dispatcher │ Sleep for 2.386692 seconds and try again... (tryings = 3, bot id = 8698048508)
+2026-03-28 20:30:57 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 20:30:57 │ WARNING  │ aiogram.dispatcher │ Sleep for 3.152374 seconds and try again... (tryings = 4, bot id = 8698048508)
+2026-03-28 20:32:00 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 20:32:00 │ WARNING  │ aiogram.dispatcher │ Sleep for 3.933867 seconds and try again... (tryings = 5, bot id = 8698048508)
+2026-03-28 21:00:30 │ INFO     │ memory │ Loaded 3 prompt mode(s): assistant, developer, analyst (default: assistant)
+2026-03-28 21:00:30 │ INFO     │ __main__ │ Pre-fetching USD/RUB rate…
+2026-03-28 21:00:31 │ INFO     │ pricing │ CBR USD/RUB updated: 81.1443
+2026-03-28 21:00:31 │ INFO     │ __main__ │ USD/RUB = 81.1443
+2026-03-28 21:00:31 │ INFO     │ __main__ │ Bot starting | chat=gpt-5-mini-2025-08-07 | sora=sora-2 | base_url=https://openai.api.proxyapi.ru/v1 | history=10
+2026-03-28 21:00:31 │ INFO     │ __main__ │ user=150370276 message (392 chars) mode=assistant
+2026-03-28 21:00:31 │ INFO     │ __main__ │ user=150370276 message (22 chars) mode=assistant
+2026-03-28 21:00:53 │ INFO     │ __main__ │ user=150370276 message (392 chars) mode=assistant
+2026-03-28 21:00:54 │ INFO     │ __main__ │ user=150370276 openai ok in 22.20s tokens=[in=167, out=2225] reply=3266 chars
+2026-03-28 21:00:54 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 167 вх / 2225 вых | 💰 Стоимость: $0.001360 ≈ 0.1104 ₽
+2026-03-28 21:00:55 │ INFO     │ __main__ │ user=150370276 openai ok in 22.86s tokens=[in=167, out=2181] reply=3930 chars
+2026-03-28 21:00:55 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 167 вх / 2181 вых | 💰 Стоимость: $0.001334 ≈ 0.1082 ₽
+2026-03-28 21:01:27 │ INFO     │ __main__ │ user=150370276 openai ok in 33.88s tokens=[in=292, out=2855] reply=4859 chars
+2026-03-28 21:01:27 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 292 вх / 2855 вых | 💰 Стоимость: $0.001757 ≈ 0.1426 ₽
+2026-03-28 21:01:27 │ ERROR    │ aiogram.event │ Cause exception while process update id=99681986 by bot id=8698048508
+TelegramBadRequest: Telegram server says - Bad Request: MESSAGE_TOO_LONG
+Traceback (most recent call last):
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 320, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 164, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 58, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 43, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 71, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 283, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 153, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 189, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 161, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 153, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 181, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 126, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 71, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\main.py", line 330, in handle_text
+    await placeholder.edit_text(full_reply, parse_mode="HTML")
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\methods\base.py", line 82, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\bot.py", line 488, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\aiohttp.py", line 177, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "d:\Tg_bot_ai1\venv\Lib\site-packages\aiogram\client\session\base.py", line 121, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: MESSAGE_TOO_LONG
+2026-03-28 21:03:07 │ INFO     │ __main__ │ user=150370276 /mode (current=assistant)
+2026-03-28 21:04:06 │ INFO     │ memory │ user=150370276 mode changed assistant → assistant (history cleared)
+2026-03-28 21:04:06 │ INFO     │ __main__ │ user=150370276 selected mode 'assistant'
+2026-03-28 21:04:13 │ INFO     │ __main__ │ user=150370276 message (744 chars) mode=assistant
+2026-03-28 21:04:32 │ INFO     │ __main__ │ user=150370276 openai ok in 18.27s tokens=[in=198, out=997] reply=1164 chars
+2026-03-28 21:04:32 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 198 вх / 997 вых | 💰 Стоимость: $0.000628 ≈ 0.0510 ₽
+2026-03-28 21:05:03 │ INFO     │ __main__ │ user=150370276 message (1164 chars) mode=assistant
+2026-03-28 21:05:14 │ INFO     │ __main__ │ user=150370276 openai ok in 11.05s tokens=[in=776, out=686] reply=1768 chars
+2026-03-28 21:05:14 │ INFO     │ __main__ │ user=150370276 cost: 📊 Токены: 776 вх / 686 вых | 💰 Стоимость: $0.000528 ≈ 0.0428 ₽
+2026-03-28 21:07:14 │ INFO     │ __main__ │ user=150370276 /reset
+2026-03-28 21:07:14 │ INFO     │ memory │ user=150370276 history reset (4 messages removed)
+2026-03-28 21:08:34 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 1236] Подключение к сети было разорвано локальной системой
+2026-03-28 21:08:34 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8698048508)
+2026-03-28 21:08:54 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+2026-03-28 21:08:54 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.184691 seconds and try again... (tryings = 1, bot id = 8698048508)
+2026-03-28 21:09:55 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 21:09:55 │ WARNING  │ aiogram.dispatcher │ Sleep for 1.514971 seconds and try again... (tryings = 2, bot id = 8698048508)
+2026-03-28 21:10:57 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 21:10:57 │ WARNING  │ aiogram.dispatcher │ Sleep for 2.236170 seconds and try again... (tryings = 3, bot id = 8698048508)
+2026-03-28 21:11:59 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-03-28 21:11:59 │ WARNING  │ aiogram.dispatcher │ Sleep for 2.877843 seconds and try again... (tryings = 4, bot id = 8698048508)
+2026-03-28 21:12:21 │ ERROR    │ aiogram.dispatcher │ Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+2026-03-28 21:12:21 │ WARNING  │ aiogram.dispatcher │ Sleep for 3.730344 seconds and try again... (tryings = 5, bot id = 8698048508)

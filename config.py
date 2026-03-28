@@ -25,10 +25,16 @@ SORA_SIZE: str = os.getenv("SORA_SIZE", "1280x720")         # 720x1280 | 1280x72
 SORA_SECONDS: str = os.getenv("SORA_SECONDS", "4")          # "4" | "8" | "12"
 SORA_POLL_INTERVAL_MS: int = int(os.getenv("SORA_POLL_INTERVAL_MS", "10000"))
 
-# ── Pricing (USD per 1 M tokens / per second) ────────────────────────────
+# ── DALL·E image ──────────────────────────────────────────────────────────
+DALLE_MODEL: str = os.getenv("DALLE_MODEL", "dall-e-2")
+DALLE_SIZE: str = os.getenv("DALLE_SIZE", "1024x1024")      # 256x256 | 512x512 | 1024x1024
+DALLE_QUALITY: str = os.getenv("DALLE_QUALITY", "standard")  # standard | hd (DALL-E 3 only)
+
+# ── Pricing (USD per 1 M tokens / per second / per image) ────────────────
 PRICE_INPUT_PER_1M: float = float(os.getenv("PRICE_INPUT_PER_1M", "0.15"))
 PRICE_OUTPUT_PER_1M: float = float(os.getenv("PRICE_OUTPUT_PER_1M", "0.60"))
 SORA_PRICE_PER_SEC: float = float(os.getenv("SORA_PRICE_PER_SEC", "0.10"))
+DALLE_PRICE_PER_IMAGE: float = float(os.getenv("DALLE_PRICE_PER_IMAGE", "0.02"))
 
 # ── Logging ───────────────────────────────────────────────────────────────
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
